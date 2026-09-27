@@ -101,7 +101,7 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/finance-tracker-system.git
+git clone https://github.com/divyanshu-chhabra/finance-tracker-system.git
 cd finance-tracker-system
 ```
 
