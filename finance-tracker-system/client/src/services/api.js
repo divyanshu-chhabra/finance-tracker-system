@@ -175,3 +175,95 @@ export const aiAPI = {
     return handleResponse(res);
   }
 };
+
+// Recurring Expenses API
+export const recurringExpensesAPI = {
+  getAll: async () => {
+    const res = await fetch(`${API_URL}/recurring-expenses`, { headers: getHeaders() });
+    return handleResponse(res);
+  },
+  create: async (data) => {
+    const res = await fetch(`${API_URL}/recurring-expenses`, {
+      method: 'POST',
+      headers: getHeaders(),
+      body: JSON.stringify(data)
+    });
+    return handleResponse(res);
+  },
+  update: async (id, data) => {
+    const res = await fetch(`${API_URL}/recurring-expenses/${id}`, {
+      method: 'PUT',
+      headers: getHeaders(),
+      body: JSON.stringify(data)
+    });
+    return handleResponse(res);
+  },
+  delete: async (id) => {
+    const res = await fetch(`${API_URL}/recurring-expenses/${id}`, {
+      method: 'DELETE',
+      headers: getHeaders()
+    });
+    return handleResponse(res);
+  },
+  toggle: async (id) => {
+    const res = await fetch(`${API_URL}/recurring-expenses/${id}/toggle`, {
+      method: 'PATCH',
+      headers: getHeaders()
+    });
+    return handleResponse(res);
+  },
+  generate: async () => {
+    const res = await fetch(`${API_URL}/recurring-expenses/generate`, {
+      method: 'POST',
+      headers: getHeaders()
+    });
+    return handleResponse(res);
+  }
+};
+
+// Income API
+export const incomeAPI = {
+  getAll: async (params = {}) => {
+    const query = new URLSearchParams(params).toString();
+    const res = await fetch(`${API_URL}/income?${query}`, { headers: getHeaders() });
+    return handleResponse(res);
+  },
+  create: async (data) => {
+    const res = await fetch(`${API_URL}/income`, {
+      method: 'POST',
+      headers: getHeaders(),
+      body: JSON.stringify(data)
+    });
+    return handleResponse(res);
+  },
+  update: async (id, data) => {
+    const res = await fetch(`${API_URL}/income/${id}`, {
+      method: 'PUT',
+      headers: getHeaders(),
+      body: JSON.stringify(data)
+    });
+    return handleResponse(res);
+  },
+  delete: async (id) => {
+    const res = await fetch(`${API_URL}/income/${id}`, {
+      method: 'DELETE',
+      headers: getHeaders()
+    });
+    return handleResponse(res);
+  },
+  getSummary: async () => {
+    const res = await fetch(`${API_URL}/income/summary`, { headers: getHeaders() });
+    return handleResponse(res);
+  }
+};
+
+// Budget Alerts API
+export const budgetAlertsAPI = {
+  getAlerts: async (month, year) => {
+    const res = await fetch(`${API_URL}/expenses/budget-alerts?month=${month}&year=${year}`, {
+      headers: getHeaders()
+    });
+    return handleResponse(res);
+  }
+};
+

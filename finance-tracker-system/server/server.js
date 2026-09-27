@@ -21,6 +21,8 @@ app.use('/api/assets', require('./routes/assets'));
 app.use('/api/liabilities', require('./routes/liabilities'));
 app.use('/api/expenses', require('./routes/expenses'));
 app.use('/api/ai', require('./routes/ai'));
+app.use('/api/recurring-expenses', require('./routes/recurringExpenses'));
+app.use('/api/income', require('./routes/income'));
 
 // Health check
 app.get('/api/health', (req, res) => {

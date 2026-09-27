@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { PieChart, Pie, Cell, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
-import { aiAPI } from '../../services/api';
-import { formatCurrency, CHART_COLORS } from '../../utils/helpers';
+import { aiAPI, budgetAlertsAPI } from '../../services/api';
+import { formatCurrency, CHART_COLORS, EXPENSE_CATEGORIES, ALERT_SEVERITY } from '../../utils/helpers';
 import { useAuth } from '../../context/AuthContext';
 import './Dashboard.css';
 
@@ -10,6 +10,7 @@ const Dashboard = () => {
   const { user } = useAuth();
   const [data, setData] = useState(null);
   const [analysis, setAnalysis] = useState(null);
+  const [budgetAlerts, setBudgetAlerts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,12 +19,15 @@ const Dashboard = () => {
 
   const loadDashboard = async () => {
     try {
-      const [dashData, analysisData] = await Promise.all([
+      const now = new Date();
+      const [dashData, analysisData, alertsData] = await Promise.all([
         aiAPI.getDashboard(),
-        aiAPI.analyze()
+        aiAPI.analyze(),
+        budgetAlertsAPI.getAlerts(now.getMonth() + 1, now.getFullYear()).catch(() => ({ alerts: [] }))
       ]);
       setData(dashData);
       setAnalysis(analysisData);
+      setBudgetAlerts(alertsData.alerts || []);
     } catch (err) {
       console.error('Dashboard load error:', err);
     } finally {
@@ -58,6 +62,42 @@ const Dashboard = () => {
         <h1 className="page-title">Welcome back, {user?.name?.split(' ')[0]} 👋</h1>
         <p className="page-subtitle">Here's your financial overview</p>
       </div>
+
+      {/* Budget Alerts */}
+      {budgetAlerts.length > 0 && (
+        <div className="budget-alerts-banner">
+          <div className="budget-alerts-header">
+            <h3 className="budget-alerts-title">🔔 Budget Alerts</h3>
+            <Link to="/expenses" className="btn btn-ghost btn-sm">Manage Budgets →</Link>
+          </div>
+          <div className="budget-alerts-list">
+            {budgetAlerts.map((alert, i) => (
+              <div key={i} className={`budget-alert-item ${alert.severity}`}>
+                <div className="budget-alert-left">
+                  <span className="budget-alert-icon">
+                    {ALERT_SEVERITY[alert.severity]?.icon}
+                  </span>
+                  <div>
+                    <div className="budget-alert-title-text">
+                      {EXPENSE_CATEGORIES[alert.category]?.icon} {alert.title}
+                    </div>
+                    <div className="budget-alert-message">{alert.message}</div>
+                  </div>
+                </div>
+                <div className="budget-alert-progress-wrap">
+                  <div className="progress-bar" style={{ height: 6 }}>
+                    <div
+                      className={`progress-bar-fill ${alert.severity === 'danger' ? 'danger' : alert.severity === 'warning' ? 'warn' : ''}`}
+                      style={{ width: `${Math.min(alert.percentUsed, 100)}%` }}
+                    ></div>
+                  </div>
+                  <span className="budget-alert-percent">{alert.percentUsed}%</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Stats Grid */}
       <div className="stats-grid">

@@ -217,6 +217,98 @@
   color: var(--text-primary);
 }
 
+/* Budget Alerts */
+.budget-alerts-banner {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  animation: fadeInUp 0.4s ease;
+}
+
+.budget-alerts-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.budget-alerts-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.budget-alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.budget-alert-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  gap: var(--space-md);
+}
+
+.budget-alert-item.danger {
+  background: rgba(244, 63, 94, 0.08);
+  border-left: 3px solid var(--danger-500);
+}
+
+.budget-alert-item.warning {
+  background: rgba(245, 158, 11, 0.08);
+  border-left: 3px solid var(--warning-500);
+}
+
+.budget-alert-item.info {
+  background: rgba(14, 165, 233, 0.08);
+  border-left: 3px solid var(--info-500);
+}
+
+.budget-alert-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 1;
+  min-width: 0;
+}
+
+.budget-alert-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.budget-alert-title-text {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.budget-alert-message {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+.budget-alert-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-width: 120px;
+}
+
+.budget-alert-percent {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  min-width: 36px;
+  text-align: right;
+}
+
 @media (max-width: 768px) {
   .health-score-container {
     flex-direction: column;
@@ -224,5 +316,14 @@
 
   .quick-actions-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .budget-alert-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .budget-alert-progress-wrap {
+    width: 100%;
   }
 }

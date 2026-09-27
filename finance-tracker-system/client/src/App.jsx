@@ -1,11 +1,14 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
 import Sidebar from './components/Sidebar/Sidebar';
 import Auth from './pages/Auth/Auth';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Assets from './pages/Assets/Assets';
 import Liabilities from './pages/Liabilities/Liabilities';
 import Expenses from './pages/Expenses/Expenses';
+import RecurringExpenses from './pages/RecurringExpenses/RecurringExpenses';
+import Income from './pages/Income/Income';
 import AIBot from './pages/AIBot/AIBot';
 import './App.css';
 
@@ -35,9 +38,11 @@ const AppLayout = () => {
       <main className="app-main">
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/income" element={<Income />} />
           <Route path="/assets" element={<Assets />} />
           <Route path="/liabilities" element={<Liabilities />} />
           <Route path="/expenses" element={<Expenses />} />
+          <Route path="/recurring" element={<RecurringExpenses />} />
           <Route path="/ai-bot" element={<AIBot />} />
         </Routes>
       </main>
@@ -47,22 +52,25 @@ const AppLayout = () => {
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Auth />} />
-          <Route
-            path="/*"
-            element={
-              <ProtectedRoute>
-                <AppLayout />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </Router>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/login" element={<Auth />} />
+            <Route
+              path="/*"
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
 export default App;
+

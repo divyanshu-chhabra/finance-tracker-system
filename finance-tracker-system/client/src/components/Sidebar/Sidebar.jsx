@@ -1,9 +1,11 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
 import './Sidebar.css';
 
 const Sidebar = () => {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -13,9 +15,11 @@ const Sidebar = () => {
 
   const navItems = [
     { path: '/', icon: '📊', label: 'Dashboard' },
+    { path: '/income', icon: '💵', label: 'Income' },
     { path: '/assets', icon: '💰', label: 'Assets' },
     { path: '/liabilities', icon: '🏦', label: 'Liabilities' },
     { path: '/expenses', icon: '📝', label: 'Expenses' },
+    { path: '/recurring', icon: '🔄', label: 'Recurring' },
     { path: '/ai-bot', icon: '🤖', label: 'AI Advisor' },
   ];
 
@@ -54,6 +58,14 @@ const Sidebar = () => {
             <span className="sidebar-user-email">{user?.email || ''}</span>
           </div>
         </div>
+        <button
+          className="sidebar-theme-toggle"
+          onClick={toggleTheme}
+          title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          id="theme-toggle-btn"
+        >
+          <span>{theme === 'dark' ? '☀️' : '🌙'}</span>
+        </button>
         <button className="sidebar-logout" onClick={handleLogout} id="logout-btn">
           <span>⏻</span>
         </button>
@@ -63,3 +75,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

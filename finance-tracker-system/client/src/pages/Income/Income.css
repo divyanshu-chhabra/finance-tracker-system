@@ -1,0 +1,157 @@
+.income-list {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.income-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.income-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: background var(--transition-fast);
+}
+
+.income-item:last-child {
+  border-bottom: none;
+}
+
+.income-item:hover {
+  background: rgba(255, 255, 255, 0.02);
+  margin: 0 calc(var(--space-md) * -1);
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+  border-radius: var(--radius-md);
+}
+
+.income-item-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex: 1;
+  min-width: 0;
+}
+
+.income-item-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.income-item-name {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.income-item-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  flex-wrap: wrap;
+}
+
+.income-item-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.income-item-amount {
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  color: var(--accent-400);
+  white-space: nowrap;
+}
+
+/* Income Streams */
+.income-streams-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.income-streams {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+.income-stream-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.income-stream-item:hover {
+  border-color: var(--border-color-hover);
+  transform: translateX(4px);
+}
+
+.income-stream-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.income-stream-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.income-stream-name {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+}
+
+.income-stream-freq {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+.income-stream-amount {
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  color: var(--accent-400);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .income-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .income-item-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,112 @@
+.recurring-list {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+
+.recurring-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.recurring-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.recurring-item:last-child {
+  border-bottom: none;
+}
+
+.recurring-item:hover {
+  background: rgba(255, 255, 255, 0.02);
+  margin: 0 calc(var(--space-md) * -1);
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+  border-radius: var(--radius-md);
+}
+
+.recurring-item.inactive {
+  opacity: 0.5;
+}
+
+.recurring-item-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex: 1;
+  min-width: 0;
+}
+
+.recurring-item-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.recurring-item-desc {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.recurring-item-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  flex-wrap: wrap;
+}
+
+.recurring-item-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.recurring-amounts {
+  text-align: right;
+}
+
+.recurring-item-amount {
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  color: var(--warning-400);
+  white-space: nowrap;
+  display: block;
+}
+
+.recurring-item-monthly {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+.recurring-actions {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+@media (max-width: 640px) {
+  .recurring-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .recurring-item-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

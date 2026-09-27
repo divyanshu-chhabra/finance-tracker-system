@@ -63,3 +63,33 @@ export const CHART_COLORS = [
   '#4c6ef5', '#10b981', '#f59e0b', '#8b5cf6', '#f43f5e',
   '#06b6d4', '#ec4899', '#f97316', '#22c55e', '#64748b'
 ];
+
+// Income source types
+export const INCOME_SOURCES = {
+  salary: { label: 'Salary', icon: '💼', color: '#4c6ef5' },
+  freelance: { label: 'Freelance', icon: '💻', color: '#10b981' },
+  business: { label: 'Business', icon: '🏢', color: '#f59e0b' },
+  rental: { label: 'Rental', icon: '🏠', color: '#8b5cf6' },
+  investment: { label: 'Investment', icon: '📈', color: '#06b6d4' },
+  dividend: { label: 'Dividend', icon: '💹', color: '#ec4899' },
+  interest: { label: 'Interest', icon: '🏦', color: '#22c55e' },
+  other: { label: 'Other', icon: '📦', color: '#64748b' }
+};
+
+// Recurring frequency labels
+export const FREQUENCY_LABELS = {
+  daily: { label: 'Daily', short: '/day' },
+  weekly: { label: 'Weekly', short: '/week' },
+  monthly: { label: 'Monthly', short: '/mo' },
+  yearly: { label: 'Yearly', short: '/yr' },
+  'one-time': { label: 'One-time', short: '' },
+  quarterly: { label: 'Quarterly', short: '/qtr' }
+};
+
+// Alert severity config
+export const ALERT_SEVERITY = {
+  danger: { label: 'Critical', icon: '🚨', color: '#f43f5e', bg: 'rgba(244, 63, 94, 0.12)' },
+  warning: { label: 'Warning', icon: '⚠️', color: '#f59e0b', bg: 'rgba(245, 158, 11, 0.12)' },
+  info: { label: 'Info', icon: 'ℹ️', color: '#0ea5e9', bg: 'rgba(14, 165, 233, 0.12)' }
+};
+

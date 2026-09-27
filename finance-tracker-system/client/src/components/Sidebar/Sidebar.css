@@ -169,6 +169,28 @@
   color: var(--danger-400);
 }
 
+.sidebar-theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.sidebar-theme-toggle:hover {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: var(--warning-500);
+  transform: rotate(20deg);
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .sidebar {
