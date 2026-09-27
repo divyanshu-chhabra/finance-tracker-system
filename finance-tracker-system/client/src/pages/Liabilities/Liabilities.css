@@ -1,0 +1,89 @@
+.liability-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: var(--space-lg);
+}
+
+.liability-card {
+  cursor: default;
+}
+
+.liability-card:hover {
+  transform: none;
+}
+
+.liability-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-lg);
+}
+
+.liability-card-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.liability-type-icon {
+  font-size: 2rem;
+}
+
+.liability-card-name {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.liability-card-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.liability-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.liability-stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.liability-stat-value {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+}
+
+.liability-progress {
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-color);
+}
+
+.liability-progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.text-negative {
+  color: var(--danger-400);
+}
+
+.table-actions {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+@media (max-width: 768px) {
+  .liability-cards {
+    grid-template-columns: 1fr;
+  }
+}

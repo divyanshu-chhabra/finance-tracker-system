@@ -1,0 +1,39 @@
+.asset-name-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.asset-type-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.asset-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.asset-institution {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+}
+
+.text-positive {
+  color: var(--success-400);
+  font-weight: 600;
+}
+
+.text-negative {
+  color: var(--danger-400);
+  font-weight: 600;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.table-actions {
+  display: flex;
+  gap: var(--space-xs);
+}
