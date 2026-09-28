@@ -30,6 +30,10 @@ const Sidebar = () => {
           <span className="sidebar-logo-icon">💎</span>
           <span className="sidebar-logo-text">FinanceMore</span>
         </div>
+        <div className="sidebar-credit">
+          <span>Created by Divyanshu Chhabra</span>
+          <span>© {new Date().getFullYear()} All rights reserved</span>
+        </div>
       </div>
 
       <nav className="sidebar-nav">
